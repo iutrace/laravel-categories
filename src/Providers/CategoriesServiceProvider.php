@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Categories\Providers;
+namespace Iutrace\Categories\Providers;
 
-use Rinvex\Categories\Models\Category;
+use Iutrace\Categories\Models\Category;
 use Illuminate\Support\ServiceProvider;
-use Rinvex\Support\Traits\ConsoleTools;
+use Iutrace\Support\Traits\ConsoleTools;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Rinvex\Categories\Console\Commands\MigrateCommand;
-use Rinvex\Categories\Console\Commands\PublishCommand;
-use Rinvex\Categories\Console\Commands\RollbackCommand;
+use Iutrace\Categories\Console\Commands\MigrateCommand;
+use Iutrace\Categories\Console\Commands\PublishCommand;
+use Iutrace\Categories\Console\Commands\RollbackCommand;
 
 class CategoriesServiceProvider extends ServiceProvider
 {
@@ -33,11 +33,11 @@ class CategoriesServiceProvider extends ServiceProvider
     public function register()
     {
         // Merge config
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'rinvex.categories');
+        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'iutrace.categories');
 
         // Bind eloquent models to IoC container
         $this->registerModels([
-            'rinvex.categories.category' => Category::class,
+            'iutrace.categories.category' => Category::class,
         ]);
 
         // Register console commands
@@ -50,14 +50,14 @@ class CategoriesServiceProvider extends ServiceProvider
     public function boot()
     {
         // Register paths to be published by the publish command.
-        $this->publishConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'rinvex/categories');
-        $this->publishMigrationsFrom(realpath(__DIR__.'/../../database/migrations'), 'rinvex/categories');
+        $this->publishConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'iutrace/categories');
+        $this->publishMigrationsFrom(realpath(__DIR__.'/../../database/migrations'), 'iutrace/categories');
 
-        ! $this->app['config']['rinvex.categories.autoload_migrations'] || $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
+        ! $this->app['config']['iutrace.categories.autoload_migrations'] || $this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
 
         // Map relations
         Relation::morphMap([
-            'category' => config('rinvex.categories.models.category'),
+            'category' => config('iutrace.categories.models.category'),
         ]);
     }
 }

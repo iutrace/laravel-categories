@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Categories\Console\Commands;
+namespace Iutrace\Categories\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand(name: 'rinvex:publish:categories')]
+#[AsCommand(name: 'iutrace:publish:categories')]
 class PublishCommand extends Command
 {
     /**
@@ -15,14 +15,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rinvex:publish:categories {--f|force : Overwrite any existing files.} {--r|resource=* : Specify which resources to publish.}';
+    protected $signature = 'iutrace:publish:categories {--f|force : Overwrite any existing files.} {--r|resource=* : Specify which resources to publish.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish Rinvex Categories Resources.';
+    protected $description = 'Publish iutrace Categories Resources.';
 
     /**
      * Execute the console command.
@@ -34,7 +34,7 @@ class PublishCommand extends Command
         $this->alert($this->description);
 
         collect($this->option('resource') ?: ['config', 'migrations'])->each(function ($resource) {
-            $this->call('vendor:publish', ['--tag' => "rinvex/categories::{$resource}", '--force' => $this->option('force')]);
+            $this->call('vendor:publish', ['--tag' => "iutrace/categories::{$resource}", '--force' => $this->option('force')]);
         });
 
         $this->line('');

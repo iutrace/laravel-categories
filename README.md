@@ -1,6 +1,8 @@
-# Rinvex Categories
+# iutrace Categories
 
-**Rinvex Categories** is a polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of **[Nested Sets](https://github.com/lazychaser/laravel-nestedset)**, and the awesomeness of **[Sluggable](https://github.com/spatie/laravel-sluggable)**, and **[Translatable](https://github.com/spatie/laravel-translatable)** models out of the box.
+**iutrace Categories** is a polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of **[Nested Sets](https://github.com/lazychaser/laravel-nestedset)**, and the awesomeness of **[Sluggable](https://github.com/spatie/laravel-sluggable)**, and **[Translatable](https://github.com/spatie/laravel-translatable)** models out of the box.
+
+> **Note**: This package is a fork of the excellent [rinvex/laravel-categories](https://github.com/rinvex/laravel-categories) package, updated for Laravel 12 and PHP 8.3 compatibility. We extend our gratitude to the original Rinvex team for their outstanding work.
 
 [![Packagist](https://img.shields.io/packagist/v/rinvex/laravel-categories.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/laravel-categories)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/laravel-categories.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/laravel-categories/)
@@ -9,29 +11,10 @@
 [![License](https://img.shields.io/packagist/l/rinvex/laravel-categories.svg?label=License&style=flat-square)](https://github.com/rinvex/laravel-categories/blob/develop/LICENSE)
 
 
-## Installation
-
-1. Install the package via composer:
-    ```shell
-    composer require rinvex/laravel-categories
-    ```
-
-2. Publish resources (migrations and config files):
-    ```shell
-    php artisan rinvex:publish:categories
-    ```
-
-3. Execute migrations via the following command:
-    ```shell
-    php artisan rinvex:migrate:categories
-    ```
-
-4. Done!
-
 
 ## Usage
 
-To add categories support to your eloquent models simply use `\Rinvex\Categories\Traits\Categorizable` trait.
+To add categories support to your eloquent models simply use `\Iutrace\Categories\Traits\Categorizable` trait.
 
 ### Manage your categories
 

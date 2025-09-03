@@ -1,6 +1,6 @@
 {
-    "name": "rinvex/laravel-categories",
-    "description": "Rinvex Categories is a polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box.",
+    "name": "iutrace/laravel-categories",
+    "description": "iutrace Categories is a polymorphic Laravel package, for category management. You can categorize any eloquent model with ease, and utilize the power of Nested Sets, and the awesomeness of Sluggable, and Translatable models out of the box. Forked from rinvex/laravel-categories with Laravel 12 and PHP 8.3 support.",
     "type": "library",
     "keywords": [
         "model",
@@ -16,53 +16,64 @@
         "rinvex"
     ],
     "license": "MIT",
-    "homepage": "https://rinvex.com",
+    "homepage": "https://github.com/iutrace/laravel-categories",
     "support": {
-        "email": "help@rinvex.com",
-        "issues": "https://github.com/rinvex/laravel-categories/issues",
-        "source": "https://github.com/rinvex/laravel-categories",
-        "docs": "https://github.com/rinvex/laravel-categories/blob/master/README.md"
+        "issues": "https://github.com/iutrace/laravel-categories/issues",
+        "source": "https://github.com/iutrace/laravel-categories",
+        "docs": "https://github.com/iutrace/laravel-categories/blob/master/README.md"
     },
     "authors": [
         {
+            "name": "Iutrace",
+            "homepage": "https://github.com/iutrace",
+            "role": "Fork Maintainer"
+        },
+        {
             "name": "Rinvex LLC",
             "homepage": "https://rinvex.com",
-            "email": "help@rinvex.com"
+            "email": "help@rinvex.com",
+            "role": "Original Author"
         },
         {
             "name": "Abdelrahman Omran",
             "homepage": "https://omranic.com",
             "email": "me@omranic.com",
-            "role": "Project Lead"
+            "role": "Original Project Lead"
         },
         {
             "name": "The Generous Laravel Community",
             "homepage": "https://github.com/rinvex/laravel-categories/contributors"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/iutrace/laravel-support"
+        }
+    ],
     "require": {
-        "php": "^8.1.0",
-        "illuminate/console": "^10.0.0 || ^11.0.0",
-        "illuminate/database": "^10.0.0 || ^11.0.0",
-        "illuminate/support": "^10.0.0 || ^11.0.0",
+        "php": "^8.3.0",
+        "illuminate/console": "^11.0.0 || ^12.0.0",
+        "illuminate/database": "^11.0.0 || ^12.0.0",
+        "illuminate/support": "^11.0.0 || ^12.0.0",
         "kalnoy/nestedset": "^6.0.0",
-        "rinvex/laravel-support": "^7.0.0",
+        "iutrace/laravel-support": "dev-master",
         "spatie/laravel-sluggable": "^3.4.0",
-        "symfony/console": "^6.2.0"
+        "symfony/console": "^6.2.0 || ^7.0.0"
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.32.0",
-        "illuminate/container": "^10.0.0 || ^11.0.0",
-        "phpunit/phpunit": "^10.1.0"
+        "illuminate/container": "^11.0.0 || ^12.0.0",
+        "phpunit/phpunit": "^10.1.0 || ^11.0.0"
     },
     "autoload": {
         "psr-4": {
-            "Rinvex\\Categories\\": "src/"
+            "Iutrace\\Categories\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rinvex\\Categories\\Tests\\": "tests"
+            "Iutrace\\Categories\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -76,7 +87,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rinvex\\Categories\\Providers\\CategoriesServiceProvider"
+                "Iutrace\\Categories\\Providers\\CategoriesServiceProvider"
             ]
         }
     },

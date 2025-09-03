@@ -15,7 +15,7 @@ class CreateCategorizablesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('rinvex.categories.tables.categorizables'), function (Blueprint $table) {
+        Schema::create(config('iutrace.categories.tables.categorizables'), function (Blueprint $table) {
             // Columns
             $table->integer('category_id')->unsigned();
             $table->morphs('categorizable');
@@ -23,7 +23,7 @@ class CreateCategorizablesTable extends Migration
 
             // Indexes
             $table->unique(['category_id', 'categorizable_id', 'categorizable_type'], 'categorizables_ids_type_unique');
-            $table->foreign('category_id')->references('id')->on(config('rinvex.categories.tables.categories'))
+            $table->foreign('category_id')->references('id')->on(config('iutrace.categories.tables.categories'))
                   ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -35,6 +35,6 @@ class CreateCategorizablesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('rinvex.categories.tables.categorizables'));
+        Schema::dropIfExists(config('iutrace.categories.tables.categorizables'));
     }
 }

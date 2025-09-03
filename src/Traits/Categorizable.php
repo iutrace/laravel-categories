@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Categories\Traits;
+namespace Iutrace\Categories\Traits;
 
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
@@ -63,7 +63,7 @@ trait Categorizable
      */
     public function categories(): MorphToMany
     {
-        return $this->morphToMany(config('rinvex.categories.models.category'), 'categorizable', config('rinvex.categories.tables.categorizables'), 'categorizable_id', 'category_id')
+        return $this->morphToMany(config('iutrace.categories.models.category'), 'categorizable', config('iutrace.categories.tables.categorizables'), 'categorizable_id', 'category_id')
                     ->withTimestamps();
     }
 
@@ -283,7 +283,7 @@ trait Categorizable
 
         // Find categories by their slugs
         if (is_string($categories) || (is_array($categories) && is_string(Arr::first($categories)))) {
-            $categories = app('rinvex.categories.category')->whereIn('slug', (array) $categories)->get()->pluck('id');
+            $categories = app('iutrace.categories.category')->whereIn('slug', (array) $categories)->get()->pluck('id');
         }
 
         if ($categories instanceof Model) {

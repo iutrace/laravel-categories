@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('rinvex.categories.tables.categories'), function (Blueprint $table) {
+        Schema::create(config('iutrace.categories.tables.categories'), function (Blueprint $table) {
             // Columns
             $table->increments('id');
             $table->string('slug');
@@ -38,6 +38,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('rinvex.categories.tables.categories'));
+        Schema::dropIfExists(config('iutrace.categories.tables.categories'));
     }
 }

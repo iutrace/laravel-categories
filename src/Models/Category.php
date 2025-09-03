@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Categories\Models;
+namespace Iutrace\Categories\Models;
 
 use Kalnoy\Nestedset\NestedSet;
 use Kalnoy\Nestedset\NodeTrait;
 use Spatie\Sluggable\SlugOptions;
-use Rinvex\Support\Traits\HasSlug;
+use Iutrace\Support\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
-use Rinvex\Support\Traits\HasTranslations;
-use Rinvex\Support\Traits\ValidatingTrait;
+use Iutrace\Support\Traits\HasTranslations;
+use Iutrace\Support\Traits\ValidatingTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
- * Rinvex\Categories\Models\Category.
+ * Iutrace\Categories\Models\Category.
  *
  * @property int                 $id
  * @property string              $slug
@@ -28,19 +28,19 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property \Carbon\Carbon|null $deleted_at
- * @property-read \Kalnoy\Nestedset\Collection|\Rinvex\Categories\Models\Category[] $children
- * @property-read \Rinvex\Categories\Models\Category|null                           $parent
+ * @property-read \Kalnoy\Nestedset\Collection|\Iutrace\Categories\Models\Category[] $children
+ * @property-read \Iutrace\Categories\Models\Category|null                           $parent
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereLft($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereRgt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Categories\Models\Category whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Iutrace\Categories\Models\Category whereUpdatedAt($value)
  *
  * @mixin \Eloquent
  */
@@ -116,11 +116,11 @@ class Category extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $this->setTable(config('rinvex.categories.tables.categories'));
+        $this->setTable(config('iutrace.categories.tables.categories'));
         $this->mergeRules([
             'name' => 'required|string|strip_tags|max:150',
             'description' => 'nullable|string|max:32768',
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('rinvex.categories.models.category').',slug',
+            'slug' => 'required|alpha_dash|max:150|unique:'.config('iutrace.categories.models.category').',slug',
             NestedSet::LFT => 'sometimes|required|integer',
             NestedSet::RGT => 'sometimes|required|integer',
             NestedSet::PARENT_ID => 'nullable|integer',
@@ -138,7 +138,7 @@ class Category extends Model
      */
     public function entries(string $class): MorphToMany
     {
-        return $this->morphedByMany($class, 'categorizable', config('rinvex.categories.tables.categorizables'), 'category_id', 'categorizable_id', 'id', 'id');
+        return $this->morphedByMany($class, 'categorizable', config('iutrace.categories.tables.categorizables'), 'category_id', 'categorizable_id', 'id', 'id');
     }
 
     /**
